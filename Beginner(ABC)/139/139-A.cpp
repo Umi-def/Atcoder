@@ -63,6 +63,6 @@ signed main(void)
 {
     ll n;
     cin >>n;
-    
+    //やり直せ！
 
 }
