@@ -96,27 +96,13 @@ const double EPS = 1e-9;
 
 signed main(void)
 {
-    ll a, b, c, d, xy = 0;
+    ll a, b, c, d, xy = 0,  stu= 0,stuck=0;
     cin >> a >> b >> c >> d;
-    if (b > 0 || c >= 0 || d > 0)
-    {
-        xy = b * d;
-    }
-    else if (a < 0 || b <= 0 || c < 0 || d <= 0)
-    {
-        xy = a * c;
-    }
-    else if (a < 0 || b >= 0 || c < 0 || d >= 0)
-    {
-        xy = max(a * c, b * d);
-    }
-    else if (a < 0 || b < 0 || c > 0 || d > 0)
-    {
-        xy = b * c;
-    }
-    else if (a > 0 || b > 0 || c < 0 || d < 0)
-    {
-        xy = a * d;
-    }
+
+    stu= max(a * c, a * d);
+    stuck=max(b * c, b * d);
+    xy=max(stu,stuck);
+    
+
     mes(xy);
 }

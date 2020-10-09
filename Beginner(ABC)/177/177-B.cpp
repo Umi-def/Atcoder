@@ -27,11 +27,11 @@ typedef vector<bool> vb;
 typedef vector<double> vd;
 typedef vector<string> vs;
 typedef vector<ll> vll;
-typedef vector<pair<int, int> > vpii;
-typedef vector<vector<int> > vvi;
-typedef vector<vector<char> > vvc;
-typedef vector<vector<string> > vvs;
-typedef vector<vector<ll> > vvll;
+typedef vector<pair<int, int>> vpii;
+typedef vector<vector<int>> vvi;
+typedef vector<vector<char>> vvc;
+typedef vector<vector<string>> vvs;
+typedef vector<vector<ll>> vvll;
 #define rep(i, n) for (int i = 0; i < (n); ++i)
 #define rrep(i, n) for (int i = 1; i <= (n); ++i)
 #define irep(it, stl) for (auto it = stl.begin(); it != stl.end(); it++)
@@ -39,13 +39,15 @@ typedef vector<vector<ll> > vvll;
 #define mes(a) cout << (a) << endl
 #define dmes(a, b) cout << (a) << " " << (b) << endl
 #define CHOOSE(a) CHOOSE2 a
-#define CHOOSE2(a0,a1,a2,a3,a4,x,...) x
-#define debug_1(x1) cout<<#x1<<": "<<x1<<endl
-#define debug_2(x1,x2) cout<<#x1<<": "<<x1<<", "#x2<<": "<<x2<<endl
-#define debug_3(x1,x2,x3) cout<<#x1<<": "<<x1<<", "#x2<<": "<<x2<<", "#x3<<": "<<x3<<endl
-#define debug_4(x1,x2,x3,x4) cout<<#x1<<": "<<x1<<", "#x2<<": "<<x2<<", "#x3<<": "<<x3<<", "#x4<<": "<<x4<<endl
-#define debug_5(x1,x2,x3,x4,x5) cout<<#x1<<": "<<x1<<", "#x2<<": "<<x2<<", "#x3<<": "<<x3<<", "#x4<<": "<<x4<<", "#x5<<": "<<x5<<endl
-#define debug(...) CHOOSE((__VA_ARGS__,debug_5,debug_4,debug_3,debug_2,debug_1,~))(__VA_ARGS__)
+#define CHOOSE2(a0, a1, a2, a3, a4, x, ...) x
+#define debug_1(x1) cout << #x1 << ": " << x1 << endl
+#define debug_2(x1, x2) cout << #x1 << ": " << x1 << ", " #x2 << ": " << x2 << endl
+#define debug_3(x1, x2, x3) cout << #x1 << ": " << x1 << ", " #x2 << ": " << x2 << ", " #x3 << ": " << x3 << endl
+#define debug_4(x1, x2, x3, x4) cout << #x1 << ": " << x1 << ", " #x2 << ": " << x2 << ", " #x3 << ": " << x3 << ", " #x4 << ": " << x4 << endl
+#define debug_5(x1, x2, x3, x4, x5) cout << #x1 << ": " << x1 << ", " #x2 << ": " << x2 << ", " #x3 << ": " << x3 << ", " #x4 << ": " << x4 << ", " #x5 << ": " << x5 << endl
+#define debug(...)                                                        \
+	CHOOSE((__VA_ARGS__, debug_5, debug_4, debug_3, debug_2, debug_1, ~)) \
+	(__VA_ARGS__)
 #define ynmes(a) (a) ? mes("Yes") : mes("No")
 #define YNmes(a) (a) ? mes("YES") : mes("NO")
 #define re0 return 0
@@ -57,11 +59,36 @@ typedef vector<vector<ll> > vvll;
 #define rSort(a) sort(a.rbegin(), a.rend())
 #define MATHPI acos(-1)
 #define itn int;
-int dx[8] = { 1, 0, -1, 0, 1, -1, -1, 1 };
-int dy[8] = { 0, 1, 0, -1, 1, 1, -1, -1 };
-template<class T> inline bool chmax(T& a, T b) { if (a < b) { a = b; return 1; } return 0; }
-template<class T> inline bool chmin(T& a, T b) { if (a > b) { a = b; return 1; } return 0; }
-struct io { io() { ios::sync_with_stdio(false); cin.tie(0); } };
+int dx[8] = {1, 0, -1, 0, 1, -1, -1, 1};
+int dy[8] = {0, 1, 0, -1, 1, 1, -1, -1};
+template <class T>
+inline bool chmax(T &a, T b)
+{
+	if (a < b)
+	{
+		a = b;
+		return 1;
+	}
+	return 0;
+}
+template <class T>
+inline bool chmin(T &a, T b)
+{
+	if (a > b)
+	{
+		a = b;
+		return 1;
+	}
+	return 0;
+}
+struct io
+{
+	io()
+	{
+		ios::sync_with_stdio(false);
+		cin.tie(0);
+	}
+};
 const int INF = INT_MAX;
 const ll LLINF = 1LL << 60;
 const ll MOD = 1000000007;
@@ -72,12 +99,15 @@ signed main(void)
 	string s, t;
 	cin >> s >> t;
 	ll c = 0, r = 100000;
-	rep(i, (ll)s.size())
+	rep(i, (ll)s.size() - (ll)t.size() + 1)
 	{
+
 		rep(j, (ll)t.size())
 		{
-			if (s[i + j] != t[j]) {
+			if (s[i + j] != t[j])
+			{
 				c++;
+				//debug(r, c);
 			}
 		}
 		r = min(r, c);

@@ -96,19 +96,22 @@ const double EPS = 1e-9;
 
 signed main(void)
 {
-    ll n, j = 0, s = 0;
-    vll a();
+    ll n, sm = 0, sum = 0;
     cin >> n;
+    vll a(n);
     rep(i, n)
     {
-        cin >> a(i);
+        cin >> a[i];
+        sum += a[i];
+        sum %= MOD;
     }
-    rep(i, n - 1)
+    for (int i = 0; i < n ; i++)
     {
-        j = i + 1;
-        rep(j, n)
-        {
-            s += a(i) * a(j);
-        }
+        sum -= a[i];
+        if(sum<0)sum+=MOD;
+        sm += a[i] * sum;
+        sm %= MOD;
     }
+    
+    mes(sm);
 }
