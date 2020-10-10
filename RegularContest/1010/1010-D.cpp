@@ -96,5 +96,26 @@ const double EPS = 1e-9;
 
 signed main(void)
 {
-    
+    ll t, suma = 0, sumb = 0, mul = 0;
+    vll n(t), a(t), b(t),r(t);
+    cin >> t;
+    rep(i, t)
+    {
+        cin >> n[i] >> a[i] >> b[i];
+    }
+    rep(i, t)
+    {
+        suma = (n[i] - a[i] + 1) * (n[i] - a[i] + 1) % 1000000007;
+        sumb = (n[i] - b[i] + 1) * (n[i] - b[i] + 1) % 1000000007;
+        if (a[i] <= b[i])
+        {
+            mul = b[i] * b[i] % 1000000007;
+        }
+        else
+        {
+            mul = a[i] * a[i] % 1000000007;
+        }
+        r[i]=(suma+sumb)%1000000007-mul;
+        mes(r[i]);
+    }
 }
