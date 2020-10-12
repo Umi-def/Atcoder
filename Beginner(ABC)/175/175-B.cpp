@@ -96,35 +96,38 @@ const double EPS = 1e-9;
 
 signed main(void)
 {
-    ll t, suma = 0, sumb = 0, mul = 0;
-    cin >> t;
-    vll n(t), a(t), b(t), r(t);
-
-    rep(i, t)
+    ll a, b, c, d;
+    cin >> a >> b >> c >> d;
+    if (a == b + c + d)
     {
-        cin >> n[i] >> a[i] >> b[i];
+        cout << "Yes";
     }
-    rep(i, t)
+    else if (b == c + d + a)
     {
-        suma = (n[i] - a[i] + 1) * (n[i] - a[i] + 1) % MOD;
-        sumb = (n[i] - b[i] + 1) * (n[i] - b[i] + 1) % MOD;
-        debug(suma);
-        debug(sumb);
-
-        if (a[i] <= b[i])
-        {
-            mul = (b[i] - a[i] + 1) * (b[i] - a[i] + 1) % MOD;
-        }
-        else
-        {
-            mul = (a[i] - b[i] + 1) * (a[i] - b[i] + 1) % MOD;
-        }
-        debug(mul);
-        r[i] = (suma * sumb) % MOD - mul;
-        if (r[i] < 0)
-        {
-            r[i] += MOD;
-        }
-        mes(r[i]);
+        cout << "Yes";
+    }
+    else if (c == b + d + a)
+    {
+        cout << "Yes";
+    }
+    else if (d == b + c + a)
+    {
+        cout << "Yes";
+    }
+    else if (a + b == c + d)
+    {
+        cout << "Yes";
+    }
+    else if (a + c == b + d)
+    {
+        cout << "Yes";
+    }
+    else if (a + d == b + c)
+    {
+        cout << "Yes";
+    }
+    else
+    {
+        cout << "No";
     }
 }
