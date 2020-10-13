@@ -95,14 +95,28 @@ const double EPS = 1e-9;
 
 signed main(void)
 {
-    ll n ,change;
-    cin>>n;
-    if(n%1000==0)
+    ll n, ac = 0, wa = 0, tle = 0, re = 0;
+    cin >> n;
+    vs s(n);
+    rep(i,n)
     {
-        mes("0");
-    }else{
-        change = 1000 - n % 1000;
-        mes(change);
+        cin >> s[i];
+        if(s[i]=="AC")
+        {
+            ac++;
+        }else if(s[i]=="WA")
+        {
+            wa++;
+        }else if(s[i]=="TLE")
+        {
+            tle++;
+        }else if(s[i]=="RE")
+        {
+            re++;
+        }
     }
-    
+    cout << "AC x " << ac << "\n";
+    cout << "WA x " << wa << "\n";
+    cout << "TLE x " << tle << "\n";
+    cout << "RE x " << re << "\n";
 }
