@@ -96,6 +96,16 @@ const double EPS = 1e-9;
 
 signed main(void)
 {
-    char s, t;
+    string s, t;
+    ll n, c = 0;
     cin >> s >> t;
+    n =(ll)s.size();
+    rep(i, n)
+    {
+        if(s[i]!=t[i])
+        {
+            c++;
+        }
+    }
+    mes(c);
 }

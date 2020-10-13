@@ -93,14 +93,34 @@ const int INF = INT_MAX;
 const ll LLINF = 1LL << 60;
 const ll MOD = 1000000007;
 const double EPS = 1e-9;
+// a と b の最大公約数を返す関数
+long long GCD(long long a, long long b)
+{
+    if (b == 0)
+        return a;
+    else
+        return GCD(b, a % b);
+}
+ll ngcd(vector<ll> a)
+{
+    ll res;
+    for (ll i = 0; i < (ll)a.size() && res != 1; i++)
+    {
+        res = GCD(a[i], res);
+    }
+    return res;
+}
 
 signed main(void)
 {
-    ll n;
-    cin >> n;
+    ll n, r = 0;
+    cin >> n ;
     vll a(n);
     rep(i, n)
     {
         cin >> a[i];
+       
     }
+    r = ngcd(a);
+    mes(r);
 }

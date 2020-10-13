@@ -69,5 +69,21 @@ const double EPS = 1e-9;
 
 signed main(void)
 {
-	
+    ll n, a, ma = 0;
+    cin >> n;
+    vll p(200005, 0);
+    rep(i, n)
+    {
+        cin >> a;
+        p[a] = 1;
+        for (ll j = ma; j < 200005; j++)
+        {
+            if (p[j] == 0)
+            {
+                mes(j);
+                ma = j;
+                break;
+            }
+        }
+    }
 }
