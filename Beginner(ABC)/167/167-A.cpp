@@ -96,7 +96,18 @@ const double EPS = 1e-9;
 
 signed main(void)
 {
-    double a, b, h, m;
-    cin >> a >> b >> h >> m;
+    string s, t;
+    int n = 0;
+    cin >> s >> t;
+    n = t.length();
+    t = t.erase(n-1);
     
+    if (s == t)
+    {
+        mes("Yes");
+    }
+    else
+    {
+        mes("No");
+    }
 }

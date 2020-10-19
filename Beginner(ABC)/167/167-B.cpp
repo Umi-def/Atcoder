@@ -96,7 +96,19 @@ const double EPS = 1e-9;
 
 signed main(void)
 {
-    double a, b, h, m;
-    cin >> a >> b >> h >> m;
-    
+    ll a, b, c, k, n = 0;
+    cin >> a >> b >> c >> k;
+    if (a >= k)
+    {
+        mes(k);
+    }
+    else if ((a + b) >= k)
+    {
+        mes(a);
+    }
+    else
+    {
+        n = k - a - b;
+        mes(a - n);
+    }
 }
