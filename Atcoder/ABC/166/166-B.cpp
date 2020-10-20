@@ -96,5 +96,25 @@ const double EPS = 1e-9;
 
 signed main(void)
 {
-    
+    ll n, k, d, a, ans = 0;
+    cin >> n >> k;
+    vll c(n, 0);
+    rep(i, k)
+    {
+        cin >> d;
+
+        rep(j, d)
+        {
+            cin >> a;
+            c[a - 1] = 1;
+        }
+    }
+    rep(i, n)
+    {
+        if(c[i]==0)
+        {
+            ans++;
+        }
+    }
+    mes(ans);
 }
