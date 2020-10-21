@@ -95,6 +95,15 @@ const ll MOD = 1000000007;
 const double EPS = 1e-9;
 
 signed main(void)
-{
-   
+{    ll n, s = 0;
+    cin >> n;
+
+    for (ll i = 1; i <= n; i++)
+    {
+        if (i % 3 != 0 && i % 5 != 0)
+        {
+            s += i;
+        }
+    }
+    mes(s);
 }
