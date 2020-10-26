@@ -16,6 +16,7 @@
 #include <bitset>
 #include <cfloat>
 #include <unordered_set>
+#include <math.h>
 #pragma GCC optimize("Ofast")
 using namespace std;
 typedef long double ld;
@@ -38,6 +39,7 @@ typedef vector<vector<ll>> vvll;
 #define drep(i, n) for (int i = (n)-1; i >= 0; --i)
 #define mes(a) cout << (a) << endl
 #define dmes(a, b) cout << (a) << " " << (b) << endl
+#define tmes(a, b, c) cout << (a) << " " << (b) << " " << (c) << endl
 #define CHOOSE(a) CHOOSE2 a
 #define CHOOSE2(a0, a1, a2, a3, a4, x, ...) x
 #define debug_1(x1) cout << #x1 << ": " << x1 << endl
@@ -97,24 +99,33 @@ int gcd(int x, int y) { return (x % y) ? gcd(y, x % y) : y; }
 
 signed main(void)
 {
-    ll n, fiv = 0, thr = 0, a = 1, b = 1;
-    cin >> n;
-
-    for (int i = 1; i < 26; i++)
+    ll n, m, s = 0, k = 0,d=0;
+    cin >> n >> m;
+    vll a(n);
+    rep(i,n)
     {
-        b = 1;
-
-        a = a * 5;
-
-        for (int j = 1; j < 38; j++)
-        {
-
-            b = b * 3;
-
-            if (a + b == n)
-            {
-                dmes(j, i);
-                re0;
-            }
-        }
+        cin >> a[i];
+        s += a[i];
     }
+    rSort(a);
+    k = 4 * m;
+    /*rep(i,n)
+    {
+        debug(a[i]);
+    }*/
+    if(s%k!=0)
+    {
+        d = s / k + 1;
+    }else if(s%k==0)
+    {
+        d = s / k;
+    }
+   
+    if(a[m-1]<d)
+    {
+        mes("No");
+    }else
+    {
+        mes("Yes");
+    }
+}

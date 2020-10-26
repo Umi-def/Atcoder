@@ -16,6 +16,7 @@
 #include <bitset>
 #include <cfloat>
 #include <unordered_set>
+#include <math.h>
 #pragma GCC optimize("Ofast")
 using namespace std;
 typedef long double ld;
@@ -36,8 +37,12 @@ typedef vector<vector<ll>> vvll;
 #define rrep(i, n) for (int i = 1; i <= (n); ++i)
 #define irep(it, stl) for (auto it = stl.begin(); it != stl.end(); it++)
 #define drep(i, n) for (int i = (n)-1; i >= 0; --i)
-#define mes(a) cout << (a) << endl
-#define dmes(a, b) cout << (a) << " " << (b) << endl
+#define mes_1(a) cout << (a) << endl
+#define mes_2(a, b) cout << (a) << " " << (b) << endl
+#define mes_3(a, b, c) cout << (a) << " " << (b) << " "<<(c) << endl
+#define mes(...)                                                        \
+    CHOOSE((__VA_ARGS__, mes_1, mes_2, mes_3,  ~)) \
+    (__VA_ARGS__)
 #define CHOOSE(a) CHOOSE2 a
 #define CHOOSE2(a0, a1, a2, a3, a4, x, ...) x
 #define debug_1(x1) cout << #x1 << ": " << x1 << endl
@@ -97,24 +102,7 @@ int gcd(int x, int y) { return (x % y) ? gcd(y, x % y) : y; }
 
 signed main(void)
 {
-    ll n, fiv = 0, thr = 0, a = 1, b = 1;
-    cin >> n;
-
-    for (int i = 1; i < 26; i++)
-    {
-        b = 1;
-
-        a = a * 5;
-
-        for (int j = 1; j < 38; j++)
-        {
-
-            b = b * 3;
-
-            if (a + b == n)
-            {
-                dmes(j, i);
-                re0;
-            }
-        }
-    }
+    ll x, y, z;
+    cin >> x >> y >> z;
+    mes(z, x, y);
+}
