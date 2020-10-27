@@ -37,11 +37,14 @@ typedef vector<vector<ll>> vvll;
 #define rrep(i, n) for (int i = 1; i <= (n); ++i)
 #define irep(it, stl) for (auto it = stl.begin(); it != stl.end(); it++)
 #define drep(i, n) for (int i = (n)-1; i >= 0; --i)
+
+#define CHOOSE3(a) CHOOSE4 a
+#define CHOOSE4(a0, a1, a2, x, ...) x
 #define mes_1(a) cout << (a) << endl
 #define mes_2(a, b) cout << (a) << " " << (b) << endl
 #define mes_3(a, b, c) cout << (a) << " " << (b) << " "<<(c) << endl
 #define mes(...)                                                        \
-    CHOOSE((__VA_ARGS__, mes_1, mes_2, mes_3,  ~)) \
+    CHOOSE3((__VA_ARGS__, mes_3, mes_2, mes_1,  ~)) \
     (__VA_ARGS__)
 #define CHOOSE(a) CHOOSE2 a
 #define CHOOSE2(a0, a1, a2, a3, a4, x, ...) x
