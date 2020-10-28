@@ -16,8 +16,8 @@
 #include <bitset>
 #include <cfloat>
 #include <unordered_set>
+#include <math.h>
 #pragma GCC optimize("Ofast")
-
 using namespace std;
 typedef long double ld;
 typedef long long int ll;
@@ -33,7 +33,6 @@ typedef vector<vector<int>> vvi;
 typedef vector<vector<char>> vvc;
 typedef vector<vector<string>> vvs;
 typedef vector<vector<ll>> vvll;
-
 #define rep(i, n) for (int i = 0; i < (n); ++i)
 #define rrep(i, n) for (int i = 1; i <= (n); ++i)
 #define irep(it, stl) for (auto it = stl.begin(); it != stl.end(); it++)
@@ -56,7 +55,6 @@ typedef vector<vector<ll>> vvll;
 #define debug(...)                                                        \
     CHOOSE((__VA_ARGS__, debug_5, debug_4, debug_3, debug_2, debug_1, ~)) \
     (__VA_ARGS__)
-
 #define ynmes(a) (a) ? mes("Yes") : mes("No")
 #define YNmes(a) (a) ? mes("YES") : mes("NO")
 #define re0 return 0
@@ -66,7 +64,6 @@ typedef vector<vector<ll>> vvll;
 #define rall(a) a.rbegin(), a.rend()
 #define Sort(a) sort(a.begin(), a.end())
 #define rSort(a) sort(a.rbegin(), a.rend())
-#define Rev(a) reverse(a.begin(), a.end())
 #define MATHPI acos(-1)
 #define itn int;
 int dx[8] = {1, 0, -1, 0, 1, -1, -1, 1};
@@ -103,53 +100,35 @@ const int INF = INT_MAX;
 const ll LLINF = 1LL << 60;
 const ll MOD = 1000000007;
 const double EPS = 1e-9;
-
-ll gcd(ll a, ll b)
-{
-    return b ? gcd(b, a % b) : a;
-}
-
-ll lcm(ll a, ll b)
-{
-    return a / gcd(a, b) * b;
-}
-
-ll nlcm(vector<ll> numbers)
-{
-    ll res;
-    res = numbers[0];
-    for (ll i = 1; i < (ll)numbers.size(); i++)
-    {
-        res = lcm(res, numbers[i]);
-    }
-    return res;
-}
-
-uintmax_t ncr(unsigned int n, unsigned int r)
-{
-    if (r * 2 > n)
-        r = n - r;
-    uintmax_t dividend = 1;
-    uintmax_t divisor = 1;
-    for (unsigned int i = 1; i <= r; ++i)
-    {
-        dividend *= (n - i + 1);
-        divisor *= i;
-    }
-    return dividend / divisor;
-}
-
+int gcd(int x, int y) { return (x % y) ? gcd(y, x % y) : y; }
 signed main(void)
 {
-    string s,a,b,c;
+    string s, r, r1, r2;
     cin >> s;
-    ll n = 0, n1 = 0, n2 = 0;
-    n = (ll)s.length();
-    n1 = (n - 1) / 2;
-    n2 = (n + 3) / 2;
-    
-    b = s.erase(n1);
-    c = s.substr(n2);
-    
-
+    ll l = 0, l1 = 0, l2 = 0, c = 0;
+    l = s.length();
+    l1 = (l - 1) / 2;
+    l2 = (l + 3) / 2;
+    rep(i, l)
+    {
+        r[i] = s[l - 1 - i];
+    }
+    rep(i, l - 1)
+    {
+        if (s[i] != r[i])
+        {
+            c++;
+        }
+    }
+    rep(i, l1)
+    {
+        r1[i] = s[l1 - 1 - i];
+    }
+    rep(i, l1 - 1)
+    {
+        if (s[i] != r1[i])
+        {
+            c++;
+        }
+    }
 }
