@@ -105,14 +105,8 @@ int gcd(int x, int y) { return (x % y) ? gcd(y, x % y) : y; }
 
 signed main(void)
 {
-    string s;
-    cin >> s;
-    if (s[2] == s[3] && s[4] == s[5])
-    {
-        mes("Yes");
-    }
-    else
-    {
-        mes("No");
-    }
+    ll n, m, ans = 0;
+    cin >> n >> m;
+    ans = n * (n - 1) / 2 + m * (m - 1) / 2;
+    mes(ans);
 }
