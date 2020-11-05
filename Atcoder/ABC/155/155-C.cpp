@@ -141,11 +141,30 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
-    ll n;
+    ll n, r = 0;
     cin >> n;
-    vs s(n);
+    vs c;
+    map<string, ll> mp;
+    string s;
     rep(i,n)
     {
-        cin >> s[i];
+        cin >> s;
+        mp[s]++;
+    }
+    for(auto i:mp)
+    {
+        r = max(r, i.second);
+    }
+    for(auto i:mp)
+    {
+        if(r==i.second)
+        {
+            c.pb(i.first);
+        }
+    }
+    Sort(c);
+    for (auto i:c)
+    {
+        mes(i);
     }
 }

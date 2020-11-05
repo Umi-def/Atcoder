@@ -141,19 +141,15 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
-    ll a, b, c, f = 0;
-    cin >> a >> b >> c;
-if(a==b&&a!=c)
-{
-    f = 1;
-}
-if(b==c&&b!=a)
-{
-    f = 1;
-}
-if(c==a&&c!=b)
-{
-    f = 1;
-}
-ynmes(f);
+    string s, t, u;
+    ll a, b;
+    cin >> s >> t >> a >> b >> u;
+    if(s==u)
+    {
+        a--;
+    }else
+    {
+        b--;
+    }
+    mes(a, b);
 }

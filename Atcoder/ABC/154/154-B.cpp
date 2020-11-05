@@ -141,39 +141,12 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
-    ll n, c = 0;
-    cin >> n;
-    vll a(n);
-    rep(i, n)
-    {
-        cin >> a[i];
-    }
-    rep(i, n)
-    {
-        if (a[i] % 2 == 0)
-        {
-           
-            if (a[i] % 3 == 0 || a[i] % 5 == 0)
-            {
+    string s;
+    cin >> s;
 
-                c = 0;
-            }
-            else
-            {
-               
-                c = 1;
-                mes("DENIED");
-                re0;
-            }
-        }
-    }
-
-    if (c == 1)
+    ll c = s.length();
+    rep(i,c)
     {
-        mes("DENIED");
-    }
-    else
-    {
-        mes("APPROVED");
+        cout << "x";
     }
 }

@@ -141,11 +141,18 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
-    ll n;
+    ll n,a;
     cin >> n;
-    vs s(n);
+    map<ll, ll> mpa;
     rep(i,n)
     {
-        cin >> s[i];
+        cin >> a;
+        mpa[a]++;
+        if(mpa[a]==2)
+        {
+            mes("NO");
+            re0;
+        }
     }
+    mes("YES");
 }
