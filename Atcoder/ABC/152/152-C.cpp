@@ -141,22 +141,40 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
-    ll n, c = 0;
+    ll n, c = 0, f = 1;
     cin >> n;
     vll p(n);
-    rep(i,n)
+    rep(i, n)
     {
         cin >> p[i];
     }
-    rep(i,n)
+    rrep(i, n)
     {
-        rep(j,i)
+        rrep(j, i)
         {
-            if(p[i]>=p[j])
-            {
-                c++;
-            }
+           
+
+               // debug(i, j, p[i - 1], p[j - 1]);
+                if (p[i - 1] <= p[j - 1])
+                {
+                    f = 1;
+                }
+                else
+                {
+                    f = 0;
+                    break;
+                }
+              //  debug(f);
+            
+            
         }
+        if (f == 1)
+        {
+            c++;
+           // debug(c);
+        }
+        f = 1;
+        
     }
     mes(c);
 }
