@@ -139,95 +139,12 @@ uintmax_t ncr(unsigned int n, unsigned int r)
     return dividend / divisor;
 }
 
-/*
 signed main()
 {
 
+
+
+
+
     
-    int h, n;
-    int d = 0;
-    cin >> h >> n;
-    vvll a(n,vll(3,0));
-    
-    rep(i,n)
-    {
-        cin >> a[i][0] >> a[i][1];
-        d=a[i][0]/a[i][1];
-        a[i][2]=d;
-        debug(i, a[i][0], a[i][1], a[i][2]);
-    }
-   sort(a.begin(), a.end(), [](const vector<int> &alpha, const vector<int> &beta) { return alpha[2] < beta[2]; });
-    rep(i, n)
-    {
-        debug(i, a[i][0], a[i][1], a[i][2]);
-    }
-}*/
-
-int main(void)
-{
-
-    double h, n;
-    double d = 0;
-    cin >> h >> n;
-    vector<vector<double>> a(n, (vector<double>(3, 0)));
-    vll c(h, 0);
-    ll s = 0;
-    ll j = 0;
-    rep(i, n)
-    {
-        cin >> a[i][0] >> a[i][1];
-        d = a[i][1] / a[i][0];
-        a[i][2] = d;
-        // debug(i, a[i][0], a[i][1], a[i][2]);
-    }
-
-    cout << " -- 要素1でソート -- " << endl;
-    sort(a.begin(), a.end(), [](const vector<double> &alpha, const vector<double> &beta) { return alpha[1] < beta[1]; });
-    rep(i, n)
-    {
-        debug(i, a[i][0], a[i][1], a[i][2]);
-    }
-    cout << " -- 要素2でソート -- " << endl;
-
-    sort(a.begin(), a.end(), [](const vector<double> &alpha, const vector<double> &beta) { return alpha[2] < beta[2]; });
-    rep(i, n)
-    {
-        debug(i, a[i][0], a[i][1], a[i][2]);
-    }
-
-    if ((ll)h % (ll)a[j][0] == 0)
-    {
-        // debug(j, a[j][1]);
-        mes((ll)h / (ll)a[j][0]);
-
-        re0;
-    }
-    else
-        while (h > 0)
-        {
-
-            c[j] = h / a[j][0];
-            // debug(j, c[j], h / a[j][0]);
-            if (c[j] == 0)
-            {
-                debug((ll)h % (ll)a[j][0]);
-                sort(a.begin(), a.end(), [](const vector<double> &alpha, const vector<double> &beta) { return alpha[1] < beta[1]; });
-                if ((ll)h % (ll)a[j][0] == 0)
-                {
-                    mes(s);
-                    re0;
-                }else
-                {
-                    mes(s + a[0][1]);
-                    re0;
-                }
-                
-                
-            }
-
-            h = (ll)h % (ll)a[j][0];
-            s += a[j][1] * c[j];
-            debug(j, c[j], h,s);
-            j++;
-        }
 }
