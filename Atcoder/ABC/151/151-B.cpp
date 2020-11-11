@@ -141,7 +141,23 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
-    char c;
-    cin >> c;
-    printf("%c",c+1);
+    ll n, k, m, sum = 0, ans = 0;
+    cin >> n >> k >> m;
+    vll a(n);
+    rep(i,n-1)
+    {
+        cin >> a[i];
+        sum += a[i];
+    }
+    ans = m * n - sum;
+    if(ans<=0)
+    {
+        ans = 0;
+    }
+    if(ans>k)
+    {
+        mes(-1);
+        re0;
+    }
+    mes(ans);
 }
