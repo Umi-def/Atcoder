@@ -141,17 +141,19 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
-    ll n, tmp = LLINF, c = 0;
-    cin >> n;
-    vll p(n);
-    rep(i, n)
+    ll a, b, k;
+    cin >> a >> b >> k;
+    if(a>=k)
     {
-        cin >> p[i];
-        if(tmp>p[i])
-        {
-            tmp = p[i];
-            c++;
-        }
+        cout << a - k << " " << b;
+    }else if(a+b>=k)
+    {
+        cout << 0 << " " << a + b - k;
+    }else
+    {
+        cout << 0 << " " << 0;
     }
-    mes(c);
+    
+     
+
 }

@@ -141,17 +141,32 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
-    ll n, tmp = LLINF, c = 0;
-    cin >> n;
-    vll p(n);
-    rep(i, n)
+    ll n, m, ac = 0, wa = 0;
+    cin >> n >> m;
+    vb flag(n, false);
+    vll wac(n,0);
+    rep(i,m)
     {
-        cin >> p[i];
-        if(tmp>p[i])
+        ll p;
+        cin >> p;
+        string s;
+        cin >> s;
+        p--;
+        if(!flag[p])
         {
-            tmp = p[i];
-            c++;
+            if(s=="AC")
+            {
+                ac++;
+                flag[p] = true;
+                wa += wac[p];
+            }
+            if(s=="WA")
+            {
+                
+                wac[p]++;
+            }
         }
+      
     }
-    mes(c);
+    mes(ac, wa);
 }

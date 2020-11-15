@@ -138,20 +138,33 @@ uintmax_t ncr(unsigned int n, unsigned int r)
     }
     return dividend / divisor;
 }
+bool is_prime(long long N)
+{
+    if (N == 1)
+        return false;
+    for (long long i = 2; i * i <= N; ++i)
+    {
+        if (N % i == 0)
+            return false;
+    }
+    return true;
+}
 
 signed main()
 {
-    ll n, tmp = LLINF, c = 0;
-    cin >> n;
-    vll p(n);
-    rep(i, n)
+    ll a, b;
+    cin >> a >> b;
+    ll s[3] = {1, 2, 3};
+    rep(i,3)
     {
-        cin >> p[i];
-        if(tmp>p[i])
+        if(s[i]==a||s[i]==b)
         {
-            tmp = p[i];
-            c++;
+            s[i] =0;
+        }
+        if(s[i]!=0)
+        {
+            mes(s[i]);
+            break;
         }
     }
-    mes(c);
 }
