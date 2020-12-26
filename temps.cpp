@@ -140,4 +140,6 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
+    
+
 }
