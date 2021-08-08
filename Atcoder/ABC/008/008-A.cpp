@@ -141,4 +141,24 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
+    map<string, ll> mp;
+    ll n, c = 0;
+    string ans;
+    cin >> n;
+    vs name(n);
+
+    rep(i, n)
+    {
+        cin >> name[i];
+        mp[name[i]]++;
+    }
+    for (auto j : mp)
+    {
+
+        if (chmax(c, j.second) == true)
+        {
+            ans = j.first;
+        }
+    }
+    mes(ans);
 }

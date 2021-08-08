@@ -141,4 +141,7 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
+    ll a, b, c;
+    cin >> a >> b >> c;
+    ynmes(a * a + b * b < c * c);
 }

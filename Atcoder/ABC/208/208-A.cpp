@@ -141,4 +141,7 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
+    int a, b;
+    cin >> a >> b;
+    ynmes((b <= a * 6) && (b >= a));
 }

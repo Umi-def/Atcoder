@@ -138,7 +138,40 @@ uintmax_t ncr(unsigned int n, unsigned int r)
     }
     return dividend / divisor;
 }
+unsigned GetDigit(unsigned num)
+{
+    unsigned digit = 0;
+    while (num != 0)
+    {
+        num /= 10;
+        digit++;
+    }
+    return digit;
+}
 
 signed main()
 {
+    ll a;
+    cin >> a;
+    int num = 0;
+    int digit = 0;
+    num = a;
+    int count = 0;
+    while (num != 0)
+    {
+        num /= 10;
+        digit++;
+        count = num;
+        cout << num;
+    }
+    rep(i, count - 1)
+    {
+    }
+    if (digit == 0)
+    {
+        cout << 0;
+    }
+    else if (digit == 2)
+    {
+    }
 }

@@ -141,4 +141,25 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
+    ll n, j, ans = 0, count = 0;
+    //ll k = 0;
+    cin >> n;
+    map<ll, ll> mp; //mapの初期化
+    vll a(n);
+
+    rep(i, n)
+    {
+
+        cin >> a[i];
+        a[i] = a[i] % 200;
+        mp[a[i]]++;
+    }
+
+    for (auto a : mp)
+    {
+        cout << a.first << " " << a.second << endl;
+        ll c = a.second;
+    }
+
+    cout << count;
 }

@@ -138,7 +138,105 @@ uintmax_t ncr(unsigned int n, unsigned int r)
     }
     return dividend / divisor;
 }
+//Dijkstra
+struct edge
+{
+    ll to, cost;
+};
+typedef pair<ll, ll> P;
+struct graph
+{
+    ll V;
+    vector<vector<edge>> G;
+    vector<ll> d;
+    graph(ll n)
+    {
+        init(n);
+    }
+    void init(ll n)
+    {
+        V = n;
+        G.resize(V);
+        d.resize(V);
+        rep(i, V)
+        {
+            d[i] = LLINF;
+        }
+    }
+    void add_edge(ll s, ll t, ll cost)
+    {
+        edge e;
+        e.to = t, e.cost = cost;
+        G[s].push_back(e);
+    }
+    void dijkstra(ll s)
+    {
+        rep(i, V)
+        {
+            d[i] = LLINF;
+        }
+        d[s] = 0;
+        priority_queue<P, vector<P>, greater<P>> que;
+        que.push(P(0, s));
+        while (!que.empty())
+        {
+            P p = que.top();
+            que.pop();
+            ll v = p.second;
+            if (d[v] < p.first)
+                continue;
+            for (auto e : G[v])
+            {
+                if (d[e.to] > d[v] + e.cost)
+                {
+                    d[e.to] = d[v] + e.cost;
+                    que.push(P(d[e.to], e.to));
+                }
+            }
+        }
+    }
+};
+//Dijkstra End
 
 signed main()
 {
+    ll r, c;
+    ll sy, sx, gy, gx;
+    cin >> r >> c;
+    cin >> sy >> sx >> gy >> gx;
+    sy--;
+    sx--;
+    gy--;
+    gx--;
+    vs field(r);
+    queue<pair<ll, ll>> que;
+    que.push(make_pair(sy, sx));
+    vvll dist(r, vll(c, -1));
+    dist[sy][sx] = 0;
+    rep(i, r)
+    {
+        cin >> field[i];
+    }
+    while (!que.empty())
+    {
+        pair<ll, ll> v = que.front();
+
+        ll y = v.first;
+        ll x = v.second;
+        que.pop();
+        rep(i, 4)
+        {
+            ll ny = y + dy[i];
+            ll nx = x + dx[i];
+            if (ny < 0 || ny >= r || nx < 0 || nx >= c)
+                continue;
+            if (field[ny][nx] == '#')
+                continue;
+            if (dist[ny][nx] != -1)
+                continue;
+            que.push(make_pair(ny, nx));
+            dist[ny][nx] = dist[y][x] + 1;
+        }
+    }
+    mes(dist[gy][gx]);
 }

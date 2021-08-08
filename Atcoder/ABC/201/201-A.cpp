@@ -141,4 +141,15 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
+    int a, b, c;
+    cin >> a >> b >> c;
+
+    if ((b - a) == (c - b) || (a - c) == (b - a) || (c - b) == (a - c))
+    {
+        cout << ("Yes");
+    }
+    else
+    {
+        cout << ("No");
+    }
 }

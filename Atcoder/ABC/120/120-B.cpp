@@ -102,6 +102,7 @@ struct io
 const int INF = INT_MAX;
 const ll LLINF = 1LL << 60;
 const ll MOD = 1000000007;
+const ll MOD2 = 998244353;
 const double EPS = 1e-9;
 
 ll gcd(ll a, ll b)
@@ -141,4 +142,49 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
+    ll h, w;
+    cin >> h >> w;
+    vs s(h);
+    vll check(h + w, 2);
+    ll ans = 1;
+    rep(i, h)
+    {
+        cin >> s[i];
+        rep(j, w)
+        {
+            if (s[i][j] == 'R')
+            {
+                if (check[i + j] == -1)
+                {
+                    check[i + j] = 0;
+                }
+                else if (check[i + j] == 2)
+                {
+                    check[i + j] = 1;
+                }
+            }
+            else if (s[i][j] == 'B')
+            {
+                if (check[i + j] == 1)
+                {
+                    check[i + j] = 0;
+                }
+                else if (check[i + j] == 2)
+                {
+                    check[i + j] = -1;
+                }
+            }
+        }
+    }
+
+    rep(c, (h + w - 1))
+    {
+        if (check[c] <= 0)
+        {
+            check[c] *= (-1);
+        }
+        ans *= check[c];
+        ans = ans % MOD2;
+    }
+    mes(ans);
 }

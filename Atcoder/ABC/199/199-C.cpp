@@ -141,4 +141,61 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
+    ll n, q;
+    int flag = 0;
+    string s;
+    //char k;
+    string s1, s2;
+    //vs s(n);
+    cin >> n;
+    cin >> s;
+    cin >> q;
+    vll t(q), a(q), b(q);
+    //m = 2 * n;
+    rep(i, q)
+    {
+        cin >> t[i] >> a[i] >> b[i];
+        a[i] = a[i] - 1;
+        b[i] = b[i] - 1;
+        if (t[i] == 1 && flag == 0)
+        {
+            swap(s[a[i]], s[b[i]]);
+            //debug(i, s);
+        }
+        else if (t[i] == 1 && flag == 1)
+        {
+            if (a[i] < n)
+            {
+                a[i] = a[i] + n;
+            }
+            else if (a[i] >= n)
+            {
+                a[i] = a[i] - n;
+            }
+            if (b[i] < n)
+            {
+                b[i] = b[i] + n;
+            }
+            else if (b[i] >= n)
+            {
+                b[i] = b[i] - n;
+            }
+            swap(s[a[i]], s[b[i]]);
+            //debug(i, s);
+        }
+        if (t[i] == 2)
+        {
+            flag++;
+            flag = flag % 2;
+            // debug(i, flag, s);
+        }
+    }
+    if (flag == 1)
+    {
+        s1 = s.substr(0, n);
+        s2 = s.substr(n);
+        s = s2 + s1;
+    }
+
+    mes(s);
 }

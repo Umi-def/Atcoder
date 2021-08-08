@@ -138,7 +138,31 @@ uintmax_t ncr(unsigned int n, unsigned int r)
     }
     return dividend / divisor;
 }
-
+#include <algorithm>
+#include <iostream>
+#include <numeric>
+#include <vector>
 signed main()
 {
+    ll n;
+    cin >> n;
+    vs name(n);
+    vll hight(n);
+
+    rep(i, n)
+    {
+        cin >> name[i] >> hight[i];
+    }
+    vector<size_t> indices(hight.size());
+    iota(indices.begin(), indices.end(), 0);
+
+    sort(indices.begin(), indices.end(), [&hight](size_t i1, size_t i2) {
+        return hight[i1] < hight[i2];
+    });
+    int c = indices[n - 2];
+    //mes(c);
+    mes(name[c]);
+    //for (auto v : indices)
+    //std::cout << v << " ";
+    //std::cout << std::endl;
 }

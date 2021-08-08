@@ -138,7 +138,35 @@ uintmax_t ncr(unsigned int n, unsigned int r)
     }
     return dividend / divisor;
 }
-
+#include <algorithm>
+#include <iostream>
+#include <numeric>
+#include <vector>
 signed main()
 {
+    ll p, c = 0;
+
+    cin >> p;
+    ll t = 3628800, n = 362880, e = 40320, s = 5040;
+
+    c += (p / t);
+    p = p % t;
+    c += (p / n);
+    p = p % n;
+    c += (p / e);
+    p = p % e;
+    c += (p / s);
+    p = p % s;
+    c += (p / 720);
+    p = p % 720;
+    c += (p / 120);
+    p = p % 120;
+    c += (p / 24);
+    p = p % 24;
+    c += (p / 6);
+    p = p % 6;
+    c += (p / 2);
+    p = p % 2;
+    c += p;
+    cout << c;
 }

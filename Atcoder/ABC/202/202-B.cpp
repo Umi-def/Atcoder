@@ -138,7 +138,28 @@ uintmax_t ncr(unsigned int n, unsigned int r)
     }
     return dividend / divisor;
 }
-
+#include <algorithm>
+#include <iostream>
+#include <numeric>
+#include <vector>
 signed main()
 {
+    string s;
+    cin >> s;
+    int l = s.length();
+    rep(i, l)
+    {
+        if (s[i] == '6')
+        {
+            s[i] = '9';
+        }
+        else if (s[i] == '9')
+        {
+            s[i] = '6';
+        }
+    }
+    drep(i, l)
+    {
+        cout << s[i];
+    }
 }

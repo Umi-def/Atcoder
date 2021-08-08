@@ -141,4 +141,34 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
+    ll n, k, c = 0;
+    cin >> n >> k;
+    map<ll, ll> p;
+
+    rep(i, n)
+    {
+        ll a;
+        ll b;
+        cin >> a >> b;
+        p[a] += b;
+    }
+
+    for (auto i : p)
+    {
+
+        k -= (i.first - c);
+        if (k < 0)
+        {
+            c = i.first + k;
+            break;
+        }
+        k += i.second;
+        c = i.first;
+    }
+    if (k >= 0)
+    {
+        c += k;
+    }
+
+    mes(c);
 }

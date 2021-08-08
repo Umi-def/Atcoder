@@ -1,24 +1,19 @@
-#include <iostream>
-#include <cstdint>
-#include <cstdio>
-#include <algorithm>
-#include <cmath>
-#include <vector>
-#include <list>
-#include <set>
-#include <map>
-#include <queue>
-#include <stack>
-#include <cctype>
-#include <cassert>
-#include <climits>
-#include <string>
-#include <bitset>
-#include <cfloat>
-#include <unordered_set>
+#include <bits/stdc++.h>
 #pragma GCC optimize("Ofast")
-
 using namespace std;
+
+//#define ACL
+#ifdef ACL
+#if __has_include(<atcoder/all>)
+#include <atcoder/all>
+using namespace atcoder;
+#endif
+#if __has_include("acl-all.h")
+#include "acl-all.h" //on Wandbox
+using namespace atcoder;
+#endif
+#endif //#ifdef ACL
+
 typedef long double ld;
 typedef long long int ll;
 typedef unsigned long long int ull;
@@ -28,24 +23,30 @@ typedef vector<bool> vb;
 typedef vector<double> vd;
 typedef vector<string> vs;
 typedef vector<ll> vll;
-typedef vector<pair<int, int>> vpii;
+typedef vector<pair<ll, ll>> vpll;
 typedef vector<vector<int>> vvi;
 typedef vector<vector<char>> vvc;
 typedef vector<vector<string>> vvs;
 typedef vector<vector<ll>> vvll;
+typedef vector<vector<bool>> vvb;
+typedef pair<ll, ll> pll;
 
-#define rep(i, n) for (int i = 0; i < (n); ++i)
-#define rrep(i, n) for (int i = 1; i <= (n); ++i)
+#define rep(i, n) for (int i = 0; i < int(n); ++i)
+#define rrep(i, n) for (int i = 1; i <= int(n); ++i)
 #define irep(it, stl) for (auto it = stl.begin(); it != stl.end(); it++)
-#define drep(i, n) for (int i = (n)-1; i >= 0; --i)
-#define CHOOSE3(a) CHOOSE4 a
-#define CHOOSE4(a0, a1, a2, x, ...) x
-#define mes_1(a) cout << (a) << endl
-#define mes_2(a, b) cout << (a) << " " << (b) << endl
-#define mes_3(a, b, c) cout << (a) << " " << (b) << " " << (c) << endl
-#define mes(...)                                   \
-    CHOOSE3((__VA_ARGS__, mes_3, mes_2, mes_1, ~)) \
+#define drep(i, n) for (int i = int(n) - 1; i >= 0; --i)
+
+#define MES(a) MES2 a
+#define MES2(a0, a1, a2, a3, a4, x, ...) x
+#define mes_1(x1) cout << x1 << endl
+#define mes_2(x1, x2) cout << x1 << " " << x2 << endl
+#define mes_3(x1, x2, x3) cout << x1 << " " << x2 << " " << x3 << endl
+#define mes_4(x1, x2, x3, x4) cout << x1 << " " << x2 << " " << x3 << " " << x4 << endl
+#define mes_5(x1, x2, x3, x4, x5) cout << x1 << " " << x2 << " " << x3 << " " << x4 << " " << x5 << endl
+#define mes(...)                                                \
+    CHOOSE((__VA_ARGS__, mes_5, mes_4, mes_3, mes_2, mes_1, ~)) \
     (__VA_ARGS__)
+
 #define CHOOSE(a) CHOOSE2 a
 #define CHOOSE2(a0, a1, a2, a3, a4, x, ...) x
 #define debug_1(x1) cout << #x1 << ": " << x1 << endl
@@ -57,7 +58,7 @@ typedef vector<vector<ll>> vvll;
     CHOOSE((__VA_ARGS__, debug_5, debug_4, debug_3, debug_2, debug_1, ~)) \
     (__VA_ARGS__)
 
-#define ynmes(a) (a) ? mes("Yes") : mes("No")
+#define Ynmes(a) (a) ? mes("Yes") : mes("No")
 #define YNmes(a) (a) ? mes("YES") : mes("NO")
 #define re0 return 0
 #define mp(p, q) make_pair(p, q)
@@ -67,8 +68,7 @@ typedef vector<vector<ll>> vvll;
 #define Sort(a) sort(a.begin(), a.end())
 #define rSort(a) sort(a.rbegin(), a.rend())
 #define Rev(a) reverse(a.begin(), a.end())
-#define MATHPI acos(-1)
-#define itn int;
+
 int dx[8] = {1, 0, -1, 0, 1, -1, -1, 1};
 int dy[8] = {0, 1, 0, -1, 1, 1, -1, -1};
 template <class T>
@@ -104,41 +104,50 @@ const ll LLINF = 1LL << 60;
 const ll MOD = 1000000007;
 const double EPS = 1e-9;
 
-ll gcd(ll a, ll b)
+ll fact_mod(ll n, ll mod)
 {
-    return b ? gcd(b, a % b) : a;
+    ll f = 1;
+    for (ll i = 2; i <= n; i++)
+        f = f * (i % mod) % mod;
+    return f;
 }
 
-ll lcm(ll a, ll b)
+ll modpow(ll x, ll n, ll mod)
 {
-    return a / gcd(a, b) * b;
-}
-
-ll nlcm(vector<ll> numbers)
-{
-    ll res;
-    res = numbers[0];
-    for (ll i = 1; i < (ll)numbers.size(); i++)
-    {
-        res = lcm(res, numbers[i]);
-    }
+    if (n == 0)
+        return 1;
+    ll res = modpow((x * x) % mod, n / 2, mod);
+    if (n & 1)
+        res = (res * x) % mod;
     return res;
 }
 
-uintmax_t ncr(unsigned int n, unsigned int r)
+ll modncr(ll n, ll r, ll mod)
 {
-    if (r * 2 > n)
+    if (r > n - r)
         r = n - r;
-    uintmax_t dividend = 1;
-    uintmax_t divisor = 1;
-    for (unsigned int i = 1; i <= r; ++i)
-    {
-        dividend *= (n - i + 1);
-        divisor *= i;
-    }
-    return dividend / divisor;
+    if (r == 0)
+        return 1;
+    ll a = 1;
+    rep(i, r) a = a * ((n - i) % mod) % mod;
+    ll b = modpow(fact_mod(r, mod), mod - 2, mod);
+    return (a % mod) * (b % mod) % mod;
 }
-
+#include <cmath>
+#include <limits>
+#include <iostream>
 signed main()
 {
+    ll r, x, y;
+    cin >> r >> x >> y;
+    //ll k = 0;
+    ll k = ceil(sqrt(x * x + y * y));
+    ll c = ceil((double)k / r);
+
+    if (k < r)
+    {
+        c++;
+    }
+
+    mes(c);
 }

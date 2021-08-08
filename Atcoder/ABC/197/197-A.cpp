@@ -141,4 +141,7 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
+    int a, b, c, d;
+    cin >> a >> b >> c >> d;
+    cout << (b - c);
 }

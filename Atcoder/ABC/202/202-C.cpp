@@ -141,4 +141,34 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
+    ll n, r = 0;
+    cin >> n;
+    map<ll, ll> mp, mpc, mpb; //mapの初期化
+    vll a(n), b(n), c(n);
+
+    rep(i, n)
+    {
+        cin >> a[i];
+        mp[a[i]]++;
+    }
+    rep(i, n)
+    {
+        cin >> b[i];
+    }
+    rep(i, n)
+    {
+        cin >> c[i];
+        c[i]--;
+        mpc[c[i]]++;
+    }
+
+    for (auto i : mpc)
+    {
+        mpb[b[i.first]] += i.second;
+    }
+    for (auto j : mpb)
+    {
+        r += j.second * mp[j.first];
+    }
+    mes(r);
 }

@@ -141,4 +141,16 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
+    int n;
+    cin >> n;
+    if (n % 100 == 0)
+    {
+        cout << n / 100;
+    }
+    else
+    {
+        {
+            cout << n / 100 + 1;
+        }
+    }
 }

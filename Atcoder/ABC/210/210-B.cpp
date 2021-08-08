@@ -138,7 +138,27 @@ uintmax_t ncr(unsigned int n, unsigned int r)
     }
     return dividend / divisor;
 }
-
+#include <algorithm>
+#include <iostream>
+#include <numeric>
+#include <vector>
 signed main()
 {
+    ll n;
+    string s;
+    cin >> n >> s;
+
+    rep(i, n)
+    {
+        if (s[i] == '1' && i % 2 == 0)
+        {
+            mes("Takahashi");
+            re0;
+        }
+        if (s[i] == '1' && i % 2 == 1)
+        {
+            mes("Aoki");
+            re0;
+        }
+    }
 }

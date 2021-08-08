@@ -141,4 +141,77 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
+    ll h, w, x, y, c = 0;
+    cin >> h >> w >> y >> x;
+    x--;
+    y--;
+    vs s(h);
+    rep(i, h)
+    {
+        cin >> s[i];
+    }
+
+    rep(j, w)
+    {
+        if (x == 0)
+        {
+            break;
+        }
+
+        else if (s[y][x] == s[y][x - j])
+        {
+            c++;
+        }
+        else
+        {
+            break;
+        }
+    }
+    rep(j, w)
+    {
+        if (x + j == (w - 1))
+        {
+            break;
+        }
+        if (s[y][x] == s[y][x + j])
+        {
+            c++;
+        }
+        else
+        {
+            break;
+        }
+    }
+    rep(j, h)
+    {
+        if (y + j == (h - 1))
+        {
+            break;
+        }
+        if (s[y][x] == s[y + j][x])
+        {
+            c++;
+        }
+        else
+        {
+            break;
+        }
+    }
+    rep(j, h)
+    {
+        if (y == 0)
+        {
+            break;
+        }
+
+        else if (s[y][x] == s[y - j][x])
+        {
+            c++;
+        }
+        else
+        {
+            break;
+        }
+    }
+    mes(c - 3);
 }

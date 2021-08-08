@@ -141,4 +141,14 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
+    char c;
+    cin >> c;
+    if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')
+    {
+        mes("vowel");
+    }
+    else
+    {
+        mes("consonant");
+    }
 }

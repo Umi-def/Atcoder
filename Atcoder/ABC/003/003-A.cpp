@@ -141,4 +141,12 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
+    ll n, c = 0;
+    cin >> n;
+    rep(i, n + 1)
+    {
+        c = c + i;
+    }
+    //mes(c);
+    mes(c * 10000 / n);
 }

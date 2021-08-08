@@ -138,7 +138,16 @@ uintmax_t ncr(unsigned int n, unsigned int r)
     }
     return dividend / divisor;
 }
-
+#include <algorithm>
+#include <iostream>
+#include <numeric>
+#include <vector>
 signed main()
 {
+    ll n, k;
+    cin >> n >> k;
+    ll s = 0, r = 0;
+    s = n * (n + 1) / 2;
+    r = k * (k + 1) / 2;
+    mes(s * k * 100 + r * n);
 }

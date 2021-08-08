@@ -141,4 +141,12 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
+    string s, ans;
+    cin >> s;
+    rrep(i, s.length() - 1)
+    {
+        ans += s[i];
+    }
+
+    mes(ans + s[0]);
 }

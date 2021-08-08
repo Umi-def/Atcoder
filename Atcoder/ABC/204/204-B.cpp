@@ -141,4 +141,16 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
+    ll n, k = 0;
+    cin >> n;
+    vll a(n);
+    rep(i, n)
+    {
+        cin >> a[i];
+        if (a[i] > 10)
+        {
+            k += a[i] - 10;
+        }
+    }
+    mes(k);
 }

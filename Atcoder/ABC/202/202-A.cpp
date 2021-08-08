@@ -141,4 +141,8 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
+    int a, b, c;
+    cin >> a >> b >> c;
+
+    mes(21 - a - b - c);
 }

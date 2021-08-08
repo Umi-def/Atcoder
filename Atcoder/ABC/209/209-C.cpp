@@ -138,7 +138,95 @@ uintmax_t ncr(unsigned int n, unsigned int r)
     }
     return dividend / divisor;
 }
+//Dijkstra
+struct edge
+{
+    ll to, cost;
+};
+typedef pair<ll, ll> P;
+struct graph
+{
+    ll V;
+    vector<vector<edge>> G;
+    vector<ll> d;
+    graph(ll n)
+    {
+        init(n);
+    }
+    void init(ll n)
+    {
+        V = n;
+        G.resize(V);
+        d.resize(V);
+        rep(i, V)
+        {
+            d[i] = LLINF;
+        }
+    }
+    void add_edge(ll s, ll t, ll cost)
+    {
+        edge e;
+        e.to = t, e.cost = cost;
+        G[s].push_back(e);
+    }
+    void dijkstra(ll s)
+    {
+        rep(i, V)
+        {
+            d[i] = LLINF;
+        }
+        d[s] = 0;
+        priority_queue<P, vector<P>, greater<P>> que;
+        que.push(P(0, s));
+        while (!que.empty())
+        {
+            P p = que.top();
+            que.pop();
+            ll v = p.second;
+            if (d[v] < p.first)
+                continue;
+            for (auto e : G[v])
+            {
+                if (d[e.to] > d[v] + e.cost)
+                {
+                    d[e.to] = d[v] + e.cost;
+                    que.push(P(d[e.to], e.to));
+                }
+            }
+        }
+    }
+};
+//Dijkstra End
 
 signed main()
 {
+    ll n;
+    cin >> n;
+    vll c(n);
+    rep(i, n)
+    {
+        cin >> c[i];
+    }
+    Sort(c);
+    ll f = 0;
+    ll ans = 1;
+    //int j = 0;
+    rep(i, n)
+    {
+        if ((c[i] - f) < 0)
+        {
+            mes(0);
+            re0;
+        }
+        else
+        {
+            ans = ans * (c[i] - f);
+            ans = ans % MOD;
+            // mes(ans);
+            f++;
+            //j = 1;
+        }
+    }
+
+        mes(ans);
 }

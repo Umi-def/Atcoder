@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <cstdint>
 #include <cstdio>
@@ -45,6 +46,12 @@ typedef vector<vector<ll>> vvll;
 #define mes_3(a, b, c) cout << (a) << " " << (b) << " " << (c) << endl
 #define mes(...)                                   \
     CHOOSE3((__VA_ARGS__, mes_3, mes_2, mes_1, ~)) \
+    (__VA_ARGS__)
+#define nmes_1(a) cout << (a) << endl
+#define nmes_2(a, b) cout << (a) << (b) << endl
+#define nmes_3(a, b, c) cout << (a) << (b) << (c) << endl
+#define nmes(...)                                     \
+    CHOOSE3((__VA_ARGS__, nmes_3, nmes_2, nmes_1, ~)) \
     (__VA_ARGS__)
 #define CHOOSE(a) CHOOSE2 a
 #define CHOOSE2(a0, a1, a2, a3, a4, x, ...) x
@@ -141,4 +148,26 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
+    ll h, w;
+    cin >> h >> w;
+    vs a(h);
+    rep(i, h)
+    {
+        cin >> a[i];
+        a[i].push_back('#');
+        // a[i].pop_back('#');
+    }
+    rep(i, w + 2)
+    {
+        cout << "#";
+    }
+    cout << endl;
+    rep(i, h)
+    {
+        mes("#" + a[i]);
+    }
+    rep(i, w + 2)
+    {
+        cout << "#";
+    }
 }

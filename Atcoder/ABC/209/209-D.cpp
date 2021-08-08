@@ -138,7 +138,117 @@ uintmax_t ncr(unsigned int n, unsigned int r)
     }
     return dividend / divisor;
 }
+//Dijkstra
+struct edge
+{
+    ll to, cost;
+};
+typedef pair<ll, ll> P;
+struct graph
+{
+    ll V;
+    vector<vector<edge>> G;
+    vector<ll> d;
+    graph(ll n)
+    {
+        init(n);
+    }
+    void init(ll n)
+    {
+        V = n;
+        G.resize(V);
+        d.resize(V);
+        rep(i, V)
+        {
+            d[i] = LLINF;
+        }
+    }
+    void add_edge(ll s, ll t, ll cost)
+    {
+        edge e;
+        e.to = t, e.cost = cost;
+        G[s].push_back(e);
+    }
+    void dijkstra(ll s)
+    {
+        rep(i, V)
+        {
+            d[i] = LLINF;
+        }
+        d[s] = 0;
+        priority_queue<P, vector<P>, greater<P>> que;
+        que.push(P(0, s));
+        while (!que.empty())
+        {
+            P p = que.top();
+            que.pop();
+            ll v = p.second;
+            if (d[v] < p.first)
+                continue;
+            for (auto e : G[v])
+            {
+                if (d[e.to] > d[v] + e.cost)
+                {
+                    d[e.to] = d[v] + e.cost;
+                    que.push(P(d[e.to], e.to));
+                }
+            }
+        }
+    }
+};
+//Dijkstra End
 
 signed main()
 {
+    ll n, q;
+    cin >> n >> q;
+
+    vvll g(n);
+    map<pair<ll, ll>, ll> mp;
+
+    rrep(i, n - 1)
+    {
+        ll a, b;
+        cin >> a >> b;
+        a--;
+        b--;
+        g[a].push_back(b);
+        g[b].push_back(a);
+        mp[mp(a, b)] = 1;
+    }
+
+    vll dist(n, -1);
+    queue<int> que;
+
+    dist[0] = 0;
+    que.push(0);
+
+    while (!que.empty())
+    {
+        ll v = que.front();
+        que.pop();
+
+        for (auto nv : g[v])
+        {
+            if (dist[nv] != -1)
+                continue;
+            dist[nv] = dist[v] + mp[mp(min(v, nv), max(v, nv))];
+            que.push(nv);
+        }
+    }
+
+    rep(i, q)
+    {
+        ll c, d;
+        cin >> c >> d;
+
+        if (((dist[c - 1] - dist[d - 1]) % 2) == 0)
+        {
+            mes("Town");
+        }
+        else
+        {
+            mes("Road");
+        }
+    }
 }

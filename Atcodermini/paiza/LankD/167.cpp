@@ -17,7 +17,6 @@
 #include <cfloat>
 #include <unordered_set>
 #pragma GCC optimize("Ofast")
-
 using namespace std;
 typedef long double ld;
 typedef long long int ll;
@@ -33,19 +32,12 @@ typedef vector<vector<int>> vvi;
 typedef vector<vector<char>> vvc;
 typedef vector<vector<string>> vvs;
 typedef vector<vector<ll>> vvll;
-
 #define rep(i, n) for (int i = 0; i < (n); ++i)
 #define rrep(i, n) for (int i = 1; i <= (n); ++i)
 #define irep(it, stl) for (auto it = stl.begin(); it != stl.end(); it++)
 #define drep(i, n) for (int i = (n)-1; i >= 0; --i)
-#define CHOOSE3(a) CHOOSE4 a
-#define CHOOSE4(a0, a1, a2, x, ...) x
-#define mes_1(a) cout << (a) << endl
-#define mes_2(a, b) cout << (a) << " " << (b) << endl
-#define mes_3(a, b, c) cout << (a) << " " << (b) << " " << (c) << endl
-#define mes(...)                                   \
-    CHOOSE3((__VA_ARGS__, mes_3, mes_2, mes_1, ~)) \
-    (__VA_ARGS__)
+#define mes(a) cout << (a) << endl
+#define dmes(a, b) cout << (a) << " " << (b) << endl
 #define CHOOSE(a) CHOOSE2 a
 #define CHOOSE2(a0, a1, a2, a3, a4, x, ...) x
 #define debug_1(x1) cout << #x1 << ": " << x1 << endl
@@ -56,7 +48,6 @@ typedef vector<vector<ll>> vvll;
 #define debug(...)                                                        \
     CHOOSE((__VA_ARGS__, debug_5, debug_4, debug_3, debug_2, debug_1, ~)) \
     (__VA_ARGS__)
-
 #define ynmes(a) (a) ? mes("Yes") : mes("No")
 #define YNmes(a) (a) ? mes("YES") : mes("NO")
 #define re0 return 0
@@ -66,7 +57,6 @@ typedef vector<vector<ll>> vvll;
 #define rall(a) a.rbegin(), a.rend()
 #define Sort(a) sort(a.begin(), a.end())
 #define rSort(a) sort(a.rbegin(), a.rend())
-#define Rev(a) reverse(a.begin(), a.end())
 #define MATHPI acos(-1)
 #define itn int;
 int dx[8] = {1, 0, -1, 0, 1, -1, -1, 1};
@@ -104,41 +94,17 @@ const ll LLINF = 1LL << 60;
 const ll MOD = 1000000007;
 const double EPS = 1e-9;
 
-ll gcd(ll a, ll b)
+signed main(void)
 {
-    return b ? gcd(b, a % b) : a;
-}
-
-ll lcm(ll a, ll b)
-{
-    return a / gcd(a, b) * b;
-}
-
-ll nlcm(vector<ll> numbers)
-{
-    ll res;
-    res = numbers[0];
-    for (ll i = 1; i < (ll)numbers.size(); i++)
+    ll m;
+    cin >> m;
+    if(m<=1000)
     {
-        res = lcm(res, numbers[i]);
-    }
-    return res;
-}
-
-uintmax_t ncr(unsigned int n, unsigned int r)
-{
-    if (r * 2 > n)
-        r = n - r;
-    uintmax_t dividend = 1;
-    uintmax_t divisor = 1;
-    for (unsigned int i = 1; i <= r; ++i)
+        mes(m);
+    }else
     {
-        dividend *= (n - i + 1);
-        divisor *= i;
-    }
-    return dividend / divisor;
-}
 
-signed main()
-{
+        mes(m + 3);
+    }
+    
 }
