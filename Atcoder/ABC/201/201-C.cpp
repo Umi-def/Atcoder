@@ -139,109 +139,148 @@ uintmax_t ncr(unsigned int n, unsigned int r)
     return dividend / divisor;
 }
 
+// signed main()
+// {
+//     char s[10];
+//     int c = 0;
+//     int n = 0;
+//     rep(i, 10)
+//     {
+//         cin >> s[i];
+//         //debug(s[i]);
+//         if (s[i] == 'o')
+//         {
+//             c++;
+//             //debug(c);
+//         }
+//         else if (s[i] == '?')
+//         {
+//             n++;
+//             // debug(n);
+//         }
+//     }
+//     if (c > 4)
+//     {
+//         mes("0");
+//     }
+//     else if (c == 4)
+//     {
+//         mes("24");
+//     }
+//     else if (c == 3)
+//     {
+//         if (n == 0)
+//         {
+//             mes("36");
+//         }
+//         else
+//         {
+//             mes(24 * n + 36);
+//         }
+//     }
+//     else if (c == 2)
+//     {
+//         if (n == 0)
+//         {
+//             mes("14");
+//         }
+//         else if (n == 1)
+//         {
+//             mes("50");
+//         }
+//         else
+//         {
+//             mes(12 * n * (n - 1) + 36 * n + 14);
+//         }
+//     }
+//     else if (c == 1)
+//     {
+//         if (n == 0)
+//         {
+//             mes("1");
+//         }
+//         else if (n == 1)
+//         {
+//             mes(1 + 14);
+//         }
+//         else if (n == 2)
+//         {
+//             mes(1 + 14 * n + 36);
+//         }
+//         else if (n == 3)
+//         {
+//             mes(1 + 14 * n + 36 * 3 + 24);
+//         }
+//         else
+//         {
+//             mes(1 + 14 * n + 36 * n * (n - 1) / 2 + 24 * n * (n - 1) * (n - 2) / 6);
+//         }
+//     }
+//     else if (c == 0)
+//     {
+
+//         if (n == 0)
+//         {
+//             mes(0);
+//         }
+//         else if (n == 1)
+//         {
+//             mes("1");
+//         }
+//         else if (n == 2)
+//         {
+//             mes(n + 14);
+//         }
+//         else if (n == 3)
+//         {
+//             mes(n + n * 14 + 36);
+//         }
+//         else if (n == 4)
+//         {
+//             mes(n + n * (n - 1) / 2 * 14 + n * 36 + 24);
+//         }
+//         else
+//         {
+//             mes(n + n * (n - 1) / 2 * 14 + n * (n - 1) * (n - 2) / 6 * 36 + n * (n - 1) * (n - 2) * (n - 3));
+//         }
+//     }
+// }
+
+ll r = 0;
+string s;
+
+void dfs(ll i, ll cnt, ll div)
+{
+    if (cnt > 4)
+        return;
+    if (i == 10)
+    {
+        if (cnt != 4)
+            return;
+        r += 24 / div;
+        return;
+    }
+
+    if (s[i] == 'x')
+    {
+        dfs(i + 1, cnt, div);
+    }
+    else
+    {
+        if (s[i] == '?')
+            dfs(i + 1, cnt, div);
+        dfs(i + 1, cnt + 1, div);
+        dfs(i + 1, cnt + 2, div * 2);
+        dfs(i + 1, cnt + 3, div * 6);
+        dfs(i + 1, cnt + 4, div * 24);
+    }
+}
+
 signed main()
 {
-    char s[10];
-    int c = 0;
-    int n = 0;
-    rep(i, 10)
-    {
-        cin >> s[i];
-        //debug(s[i]);
-        if (s[i] == 'o')
-        {
-            c++;
-            //debug(c);
-        }
-        else if (s[i] == '?')
-        {
-            n++;
-            // debug(n);
-        }
-    }
-    if (c > 4)
-    {
-        mes("0");
-    }
-    else if (c == 4)
-    {
-        mes("24");
-    }
-    else if (c == 3)
-    {
-        if (n == 0)
-        {
-            mes("36");
-        }
-        else
-        {
-            mes(24 * n + 36);
-        }
-    }
-    else if (c == 2)
-    {
-        if (n == 0)
-        {
-            mes("14");
-        }
-        else if (n == 1)
-        {
-            mes("50");
-        }
-        else
-        {
-            mes(12 * n * (n - 1) + 36 * n + 14);
-        }
-    }
-    else if (c == 1)
-    {
-        if (n == 0)
-        {
-            mes("1");
-        }
-        else if (n == 1)
-        {
-            mes(1 + 14);
-        }
-        else if (n == 2)
-        {
-            mes(1 + 14 * n + 36);
-        }
-        else if (n == 3)
-        {
-            mes(1 + 14 * n + 36 * 3 + 24);
-        }
-        else
-        {
-            mes(1 + 14 * n + 36 * n * (n - 1) / 2 + 24 * n * (n - 1) * (n - 2) / 6);
-        }
-    }
-    else if (c == 0)
-    {
+    cin >> s;
 
-        if (n == 0)
-        {
-            mes(0);
-        }
-        else if (n == 1)
-        {
-            mes("1");
-        }
-        else if (n == 2)
-        {
-            mes(n + 14);
-        }
-        else if (n == 3)
-        {
-            mes(n + n * 14 + 36);
-        }
-        else if (n == 4)
-        {
-            mes(n + n * (n - 1) / 2 * 14 + n * 36 + 24);
-        }
-        else
-        {
-            mes(n + n * (n - 1) / 2 * 14 + n * (n - 1) * (n - 2) / 6 * 36 + n * (n - 1) * (n - 2) * (n - 3));
-        }
-    }
+    dfs(0, 0, 1);
+
+    mes(r);
 }

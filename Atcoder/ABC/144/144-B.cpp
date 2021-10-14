@@ -34,8 +34,8 @@ typedef vector<vector<char>> vvc;
 typedef vector<vector<string>> vvs;
 typedef vector<vector<ll>> vvll;
 
-#define rep(i, n) for (int i = 0; i < (n); ++i)
-#define rrep(i, n) for (int i = 1; i <= (n); ++i)
+#define rep(i, n) for (int i = 0; i < (ll)(n); ++i)
+#define rrep(i, n) for (int i = 1; i <= (ll)(n); ++i)
 #define irep(it, stl) for (auto it = stl.begin(); it != stl.end(); it++)
 #define drep(i, n) for (int i = (n)-1; i >= 0; --i)
 #define CHOOSE3(a) CHOOSE4 a
@@ -141,6 +141,20 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
-    ll n;
-    cin >> n;
-    g
+
+    string s;
+    cin >> s;
+    int num, ans = 999;
+
+    //debug(s.size() - 2);
+    rep(i, (s.size() - 2))
+    {
+        //string tmp = s[i] + s[i + 1] + s[i + 2];
+        num = (s[i] - '0') * 100 + (s[i + 1] - '0') * 10 + (s[i + 2] - '0');
+
+        num = abs(num - 753);
+        //debug(num);
+        chmin(ans, num);
+    }
+    mes(ans);
+}

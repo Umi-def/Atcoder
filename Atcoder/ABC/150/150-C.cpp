@@ -141,11 +141,37 @@ uintmax_t ncr(unsigned int n, unsigned int r)
 
 signed main()
 {
-    ll n;
+    ll n, cp = 0, cq = 0, k = 0;
     cin >> n;
-    vi p(n), q(n);
-    rep(i,n)
+    vll p(n), q(n), tmp(n);
+    rep(i, n)
     {
         cin >> p[i];
     }
+    rep(i, n)
+    {
+        cin >> q[i];
+    }
+    rep(i, n)
+    {
+        tmp[i] = i + 1;
+        //debug(tmp[i]);
+    }
+
+    while (next_permutation(tmp.begin(), tmp.end()))
+    {
+        k++;
+        //debug(k);
+        if (tmp == p)
+        {
+            cp = k;
+            //debug(cp);
+        }
+        if (tmp == q)
+        {
+            cq = k;
+            //debug(cq);
+        }
+    }
+    mes(abs(cp - cq));
 }

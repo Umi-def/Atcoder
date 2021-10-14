@@ -16,8 +16,20 @@
 #include <bitset>
 #include <cfloat>
 #include <unordered_set>
+#include <limits>
+#include <math.h>
+#include <utility>
+#include <tuple>
+#include <deque>
+#include <unordered_map>
 #pragma GCC optimize("Ofast")
+#include <boost/multiprecision/cpp_int.hpp>
+#include <boost/multiprecision/cpp_dec_float.hpp>
+#include <iomanip>
+using namespace boost::multiprecision;
 
+typedef cpp_int BigNum;
+typedef cpp_dec_float_100 PreciseFloat;
 using namespace std;
 typedef long double ld;
 typedef long long int ll;
@@ -34,8 +46,8 @@ typedef vector<vector<char>> vvc;
 typedef vector<vector<string>> vvs;
 typedef vector<vector<ll>> vvll;
 
-#define rep(i, n) for (int i = 0; i < (n); ++i)
-#define rrep(i, n) for (int i = 1; i <= (n); ++i)
+#define rep(i, n) for (int i = 0; i < (ll)(n); ++i)
+#define rrep(i, n) for (int i = 1; i <= (ll)(n); ++i)
 #define irep(it, stl) for (auto it = stl.begin(); it != stl.end(); it++)
 #define drep(i, n) for (int i = (n)-1; i >= 0; --i)
 #define CHOOSE3(a) CHOOSE4 a
@@ -53,11 +65,13 @@ typedef vector<vector<ll>> vvll;
 #define debug_3(x1, x2, x3) cout << #x1 << ": " << x1 << ", " #x2 << ": " << x2 << ", " #x3 << ": " << x3 << endl
 #define debug_4(x1, x2, x3, x4) cout << #x1 << ": " << x1 << ", " #x2 << ": " << x2 << ", " #x3 << ": " << x3 << ", " #x4 << ": " << x4 << endl
 #define debug_5(x1, x2, x3, x4, x5) cout << #x1 << ": " << x1 << ", " #x2 << ": " << x2 << ", " #x3 << ": " << x3 << ", " #x4 << ": " << x4 << ", " #x5 << ": " << x5 << endl
-#define debug(...) CHOOSE((__VA_ARGS__, debug_5, debug_4, debug_3, debug_2, debug_1, ~)) \
-(__VA_ARGS__)
+#define debug(...)                                                        \
+    CHOOSE((__VA_ARGS__, debug_5, debug_4, debug_3, debug_2, debug_1, ~)) \
+    (__VA_ARGS__)
 
-#define ynmes(a) (a) ? mes("Yes") : mes("No")
+#define Ynmes(a) (a) ? mes("Yes") : mes("No")
 #define YNmes(a) (a) ? mes("YES") : mes("NO")
+#define ynmes(a) (a) ? mes("yes") : mes("no")
 #define re0 return 0
 #define mp(p, q) make_pair(p, q)
 #define pb(n) push_back(n)
@@ -67,7 +81,8 @@ typedef vector<vector<ll>> vvll;
 #define rSort(a) sort(a.rbegin(), a.rend())
 #define Rev(a) reverse(a.begin(), a.end())
 #define MATHPI acos(-1)
-#define itn int;
+#define asn ans
+#define deubg debug
 int dx[8] = {1, 0, -1, 0, 1, -1, -1, 1};
 int dy[8] = {0, 1, 0, -1, 1, 1, -1, -1};
 template <class T>
@@ -103,6 +118,33 @@ const ll LLINF = 1LL << 60;
 const ll MOD = 1000000007;
 const double EPS = 1e-9;
 
+ll fact_mod(ll n, ll mod)
+{
+    ll f = 1;
+    for (ll i = 2; i <= n; i++)
+        f = f * (i % mod) % mod;
+    return f;
+}
+ll modpow(ll x, ll n, ll mod)
+{
+    if (n == 0)
+        return 1;
+    ll res = modpow((x * x) % mod, n / 2, mod);
+    if (n & 1)
+        res = (res * x) % mod;
+    return res;
+}
+ll modncr(ll n, ll r, ll mod)
+{
+    if (r > n - r)
+        r = n - r;
+    if (r == 0)
+        return 1;
+    ll a = 1;
+    rep(i, r) a = a * ((n - i) % mod) % mod;
+    ll b = modpow(fact_mod(r, mod), mod - 2, mod);
+    return (a % mod) * (b % mod) % mod;
+}
 ll gcd(ll a, ll b)
 {
     return b ? gcd(b, a % b) : a;
@@ -137,9 +179,14 @@ uintmax_t ncr(unsigned int n, unsigned int r)
     }
     return dividend / divisor;
 }
-
-signed main()
+template <typename T>
+T FAC(T n)
 {
-    
-
+    T res = 1;
+    for (ll i = 1; i <= n; i++)
+    {
+        res *= i;
+        res = res % MOD;
+    }
+    return res;
 }

@@ -153,6 +153,11 @@ signed main()
     map<ll, ll> mp;
     vll a(2 * m);
     m = m * 2;
+
+    rrep(i, n)
+    {
+        mp[i] = 0;
+    }
     rep(i, m)
     {
         cin >> a[i];
@@ -163,6 +168,5 @@ signed main()
     for (auto i : mp)
     {
         mes(mp[i.first]);
-        mes(mp[i.second]);
     }
 }
